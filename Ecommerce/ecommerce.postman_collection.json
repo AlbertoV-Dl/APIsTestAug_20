@@ -1,0 +1,1749 @@
+{
+	"info": {
+		"_postman_id": "22746977-4df8-4298-b751-c915d04e216d",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ver categorias v1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c3e53742-c569-464d-aa07-b457a882b810",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"pm.test(\"Validar codigo\", function(){\r",
+							"//    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq('1020');\r",
+							"    pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene label\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"label\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "acce",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1/public/categories/insert?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1",
+						"public",
+						"categories",
+						"insert"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver categorias1.1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a832c10a-b626-47be-853a-f9da8968366b",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"pm.test(\"Validar codigo\", function(){\r",
+							"//    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq('1020');\r",
+							"    pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene label\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"label\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json, text/plain, */*"
+					}
+				],
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1.1/public/categories/filter?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"public",
+						"categories",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rgiones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5011b8c2-961b-41f5-9331-83df3083602e",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"//var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"//pm.test(\"Validar codigo\", function(){\r",
+							"//    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq('1020');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"//})\r",
+							"\r",
+							"pm.test(\"Validar body contiene label\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"label\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1.1/public/regions?lang=es&depth=1",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"public",
+						"regions"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						},
+						{
+							"key": "depth",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generate user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "db5d97b5-5e73-4d67-be1c-d3cc6db85bd6",
+						"exec": [
+							"//Creammos una variable que mande a llamar una funcion para generar numeros random\r",
+							"let numrandom = Math.floor(Math.random() * Math.floor(99999999999999999) + 10000);\r",
+							"//Imprimir en consola\r",
+							"console.log(\"Valor correo\", numrandom)\r",
+							"// Creamos una variable llamada email para formar un correo electronoco\r",
+							"var email = \"agente\" + numrandom.toString(36) + \"@mailinator.com\";\r",
+							"\r",
+							"//Seteamos una variable de ambiente donde guardamos el correo\r",
+							"pm.environment.set(\"email\", email)\r",
+							"// Mostramos en consola el correo\r",
+							"console.log(\"email\", email);\r",
+							"// Creamos una variable para concatenar\r",
+							"var emailFormado = (pm.environment.get(\"email\")).concat(\":\", (pm.environment.get(\"password\")))\r",
+							"console.log(\"emailF\", emailFormado);\r",
+							"// Encodeamos en base 64 lo concatenado anteriormente\r",
+							"var encoded = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(emailFormado))\r",
+							"// Mostramos en cosola lo encodead\r",
+							"console.log(\"Encode: \", encoded)\r",
+							"//Seteamos la variable donde se formo nuestro \"Token\"\r",
+							"pm.environment.set(\"base64\", encoded)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "529fed31-4df8-4802-9225-0c3d69d98f9a",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(401)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"//var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"//pm.test(\"Validar codigo\", function(){\r",
+							"//    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq('1020');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"//})\r",
+							"\r",
+							"pm.test(\"Validar body contiene label\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"code\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{base64}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":{\"email\":\"{{email}}\",\"phone\":6556654455,\"name\":\"AgenteVentas\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1.1/private/accounts?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"private",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request crear token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "493ed5d3-226b-4123-937e-e61166227a07",
+						"exec": [
+							"var email = pm.environment.get('validemail')\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"console.log(email, pass)\r",
+							"\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"\r",
+							"pm.environment.set(\"base64\", encodeKeys)\r",
+							"\r",
+							"console.log(encodeKeys)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0b8763b-9bc5-4a8d-886f-faa2be8ac67b",
+						"exec": [
+							"var jsonData = pm.response.json\r",
+							"\r",
+							"pm.environment"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{base64}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{url_base}}/nga/api/v1.1/private/accounts?lang=es",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"private",
+						"accounts"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear anuncio",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f863e9af-b65f-4da4-98ef-cf56e48845cc",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Token_uuid_Atoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain. */*",
+						"type": "text"
+					},
+					{
+						"key": "x-source",
+						"value": "PHOENIX_DESKTOP",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"category\":\"8041\",\"subject\":\"Servico de consultoria\",\"body\":\"Consultoría de arquitectos a tus ordenes, pregunta por nuestros servicios\",\"price\":\"1\",\"region\":\"28\",\"municipality\":\"1963\",\"area\":\"83521\",\"phone_hidden\":\"true\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/accounts/9ed810ca-aa11-4c35-84ed-effdca021a59/up",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"accounts",
+						"9ed810ca-aa11-4c35-84ed-effdca021a59",
+						"up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create address",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c848d04b-24d7-4721-9407-09cef7fb413e",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic {{Token_uuid_Atoken}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "contact",
+							"value": "Vendedor cinco",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "5553768723",
+							"type": "text"
+						},
+						{
+							"key": "rfc",
+							"value": "syrp831103",
+							"type": "text"
+						},
+						{
+							"key": "zipCode",
+							"value": "76543",
+							"type": "text"
+						},
+						{
+							"key": "exteriorInfo",
+							"value": "Lop%C3%A9z%20Mateos%204213",
+							"type": "text"
+						},
+						{
+							"key": "interiorInfo",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "region",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "municipality",
+							"value": "224",
+							"type": "text"
+						},
+						{
+							"key": "area",
+							"value": "5666",
+							"type": "text"
+						},
+						{
+							"key": "alias",
+							"value": "Mi 20direccion",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/addresses/v1/create",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"addresses",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change phone",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62459e05-332d-4eef-8ac2-0667b6256e5b",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"//var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"//pm.test(\"Validar codigo\", function(){\r",
+							"//    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq('1020');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"//})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "53727f51-ed20-4189-a9f6-b702d55a2083",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "es",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":\"ventas uno\",\r\n    \"phone\":\"123456789\",\r\n    \"professional\":false,\r\n    \"phone_hidden\":false\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"",
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c6498651-36da-475f-8a99-867710a11c66",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "04632129-116d-4d70-b702-531205bdebbd",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"//var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"//pm.test(\"Validar codigo\", function(){\r",
+							"//    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq('1020');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"//})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":\"ventas dos\",\r\n    \"phone\":\"123456789\",\r\n    \"professional\":false,\r\n    \"phone_hidden\":false\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"",
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add region",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2cbf1b2c-c56e-4b0b-b47a-79e93be007e4",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f33a4d25-16df-4330-bf01-337661ca13e8",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"//var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"//pm.test(\"Validar codigo\", function(){\r",
+							"//    pm.expect(jsonData.categories[0].categories[0].code).to.be.eq('1020');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"//})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":\"ventas uno\",\r\n    \"phone\":\"5555555555\",\r\n    \"locations\":[\r\n        {\"code\":\"10\",\r\n        \"key\":\"region\",\r\n        \"label\":\"Chihuahua\",\r\n        \"locations\":[\r\n            {\"code\":\"283\",\r\n            \"key\":\"municipality\"\r\n            ,\"label\":\"Satevó\"}\r\n            ]\r\n            }\r\n            ],\r\n            \"professional\":false,\r\n            \"phone_hidden\":false}\r\n            }"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chihuahua depts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea946801-b114-4108-b41b-874cbe45bd50",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(\"data value\", jsonData.code);\r",
+							"\r",
+							"pm.test(\"Validar codigo 10\", function(){\r",
+							"    pm.expect(jsonData.code).to.be.eq('10');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene label\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"label\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1.1/public/regions?depth=1&from=region:10&lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"nga",
+						"api",
+						"v1.1",
+						"public",
+						"regions"
+					],
+					"query": [
+						{
+							"key": "depth",
+							"value": "1"
+						},
+						{
+							"key": "from",
+							"value": "region:10"
+						},
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send alphabetic values in phone",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4eb2913d-1c5d-4430-af36-5e008b2dc6f0",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e502407c-ab8a-4ee1-91bb-2d94451c6621",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(400)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(\"data value\", jsonData.error.causes[0].code);\r",
+							"\r",
+							"pm.test(\"Validar codigo\", function(){\r",
+							"    pm.expect(jsonData.error.causes[0].code).to.be.eq('ERROR_PHONE_INVALID');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":\"ventas uno\",\r\n    \"phone\":\"doce\",\r\n    \"professional\":false,\r\n    \"phone_hidden\":false\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"",
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send less vvalues in phone",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b3479774-a695-4f7c-a127-1b854e7c1b96",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "570bf826-e0e7-4938-9ace-5917dae87abe",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(400)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(\"data value\", jsonData.error.causes[0].code);\r",
+							"\r",
+							"pm.test(\"Validar codigo\", function(){\r",
+							"    pm.expect(jsonData.error.causes[0].code).to.be.eq('ERROR_PHONE_TOO_SHORT');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":\"ventas uno\",\r\n    \"phone\":\"12345\",\r\n    \"professional\":false,\r\n    \"phone_hidden\":false\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"",
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send more than 8 nums in phone",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ebfdd4c8-2834-4a55-9eb9-13996e3ac683",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "f30e89d7-b81e-4a6f-9513-d8f769a53cc1",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(400)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.error.causes[0].code);\r",
+							"\r",
+							"pm.test(\"Validar codigo\", function(){\r",
+							"    pm.expect(jsonData.error.causes[0].code).to.be.eq('ERROR_PHONE_TOO_LONG');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":\"ventas uno\",\r\n    \"phone\":\"1234567891123456789212345678931234567894\",\r\n    \"professional\":false,\r\n    \"phone_hidden\":false\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"",
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send numerics in name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "587afae4-76fc-4977-adef-70e1ad5ddd8d",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0125c62a-a1f0-4e42-8f5c-1059590a6fb0",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(400)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"pm.test(\"Validar codigo\", function(){\r",
+							"    pm.expect(jsonData.error.causes[0].code).to.be.eq('ERROR_NAME_INVALID');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":\"33333322\",\r\n    \"phone\":\"123456789\",\r\n    \"professional\":false,\r\n    \"phone_hidden\":false\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"",
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send one value in name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "123e3ab9-dffb-4419-b228-c76b1d14b500",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b15e854b-9a60-4e39-a1db-6afcbf974b0c",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(400)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"pm.test(\"Validar codigo\", function(){\r",
+							"    pm.expect(jsonData.error.causes[0].code).to.be.eq('ERROR_NAME_INVALID');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":\"justone\",\r\n    \"phone\":\"123456789\",\r\n    \"professional\":false,\r\n    \"phone_hidden\":false\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"",
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send account without values",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d9ad9844-872b-405d-88ef-32d95b917f60",
+						"exec": [
+							"//var email = pm.environment.get('correoValido')\r",
+							"let email = \"alberto.edlira@gmail.com\";\r",
+							"//console.log(\"Email: \", email);\r",
+							"var pass = pm.environment.get('validpass')\r",
+							"let encodeKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(email + \":\" + pass));\r",
+							"pm.environment.set(\"Base64\",encodeKeys)\r",
+							"\r",
+							"pm.sendRequest({\r",
+							"    url:'https://webapi.segundamano.mx/nga/api/v1.1/private/accounts?lang=es',\r",
+							"    method: 'POST',\r",
+							"    header: 'Authorization: Basic ' + encodeKeys,\r",
+							"}, function(err, res){\r",
+							"    //console.log(\"Res SendRequest: \",res )\r",
+							"    var jsonResponse = res.json()\r",
+							"    console.log(\"jsonresponse: \", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"access_token\", jsonResponse.access_token)\r",
+							"    pm.environment.set(\"uuid\",jsonResponse.account.uuid )\r",
+							"\r",
+							"});\r",
+							"\r",
+							"var token = pm.environment.get('access_token')\r",
+							"var uuid = pm.environment.get('uuid')\r",
+							"console.log(\"uuid \", uuid)\r",
+							"\r",
+							"let encode = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(uuid + \":\" + token));\r",
+							"\r",
+							"pm.environment.set(\"Token_uuid_Atoken\",encode)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3079ca40-0b81-4e7c-886c-ba3a42a7afc4",
+						"exec": [
+							"pm.test(\"Validar status\", function(){\r",
+							"    pm.response.to.have.status(400)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Json present\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"//console.log(\"data value\", jsonData.categories[0].categories[0].code);\r",
+							"\r",
+							"pm.test(\"Validar codigo\", function(){\r",
+							"    pm.expect(jsonData.error.causes[0].code).to.be.eq('ERROR_NAME_INVALID');\r",
+							"  //  pm.expect(jsonData.categories[0].categories[0].code).to.be.a(\"string\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validar body contiene error\", function(){\r",
+							"    pm.expect(pm.response.text()).to.include(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "tag:scmcoord.com,2013:api mc1xe8cd81f3883872136ae1a22dab7ec3afd42fa5a4_v2",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"account\":\r\n    {\"name\":null,\r\n    \"phone\":null,\r\n    \"professional\":false,\r\n    \"phone_hidden\":false\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://webapi.segundamano.mx/nga/api/v1/private/accounts/10806031?lang=es",
+					"protocol": "https",
+					"host": [
+						"webapi",
+						"segundamano",
+						"mx"
+					],
+					"path": [
+						"",
+						"nga",
+						"api",
+						"v1",
+						"private",
+						"accounts",
+						"10806031"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "es"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

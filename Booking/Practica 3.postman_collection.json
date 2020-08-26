@@ -1,0 +1,569 @@
+{
+	"info": {
+		"_postman_id": "c7330907-b55e-4082-a8ab-b4d707b89ce4",
+		"name": "Practica 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "health check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1bb72e12-1eeb-4449-ad7d-1f3803e6a1c2",
+						"exec": [
+							"pm.test(\"Validate 201 status\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status code\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});\r",
+							"pm.test(\"Validate header contenttype\",function(){\r",
+							"    pm.response.to.have.header(\"Content-type\")\r",
+							"})\r",
+							"console.log(\"Response\", pm.response)\r",
+							"console.log(\"Response code\", pm.response.code)\r",
+							"console.log(\"Response status\", pm.response.status)\r",
+							"console.log(\"Response time\", pm.response.responseTime)\r",
+							"console.log(\"Response body\", pm.response.text)\r",
+							"console.log(\"Response body\", pm.response.responseSize)\r",
+							"console.log(\"Response body\", pm.response.header)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url_base}}/ping",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2d4c5aa-5531-42f4-a24b-b21fdbed88ad",
+						"exec": [
+							"pm.test(\"have body\", function(){\r",
+							"    pm.response.to.have.body;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"pm.test(\"Validate header contenttype\",function(){\r",
+							"    pm.response.to.have.header(\"Content-type\")\r",
+							"})\r",
+							"pm.test(\"Is Json\", function(){\r",
+							"    pm.response.to.be.json\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validate field\",function(){\r",
+							"    pm.expect(jsonData[0].booking).not.eq(\"undefined\")\r",
+							" \r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url_base}}/booking",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ver reservacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "36926307-5560-4109-a820-0b989efffa3d",
+						"exec": [
+							"pm.test(\"status time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"pm.test(\"Validate header contenttype\",function(){\r",
+							"    pm.response.to.have.header(\"Content-type\")\r",
+							"})\r",
+							"pm.test(\"Prueba status code\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"pm.test(\"Validar que sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData= pm.response.json();\r",
+							"console.log(\"json nombre\", jsonData.firstname)\r",
+							"\r",
+							"pm.test(\"firtsname validation\", function(){\r",
+							"    pm.expect(jsonData.firstname).to.be.equal(\"Jimys\")\r",
+							"})\r",
+							"\r",
+							"pm.test(\"lastname validation\", function(){\r",
+							"    pm.expect(jsonData.lastname).to.be.equal(\"Brownys\")\r",
+							"})\r",
+							"\r",
+							"pm.test(\"totla price validation\", function(){\r",
+							"    pm.expect(jsonData.totalprice).to.be.equal(111)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"booking dates validation\", function(){\r",
+							"    pm.expect(jsonData.bookingdates.checkin).to.be.equal(\"2018-01-01\")\r",
+							"    pm.expect(jsonData.bookingdates.checkout).to.be.equal(\"2019-01-01\")\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url_base}}/booking/{{ID}}",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"booking",
+						"{{ID}}"
+					],
+					"query": [
+						{
+							"key": "lastname",
+							"value": "smith",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reservaciob",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "781f03af-295f-4f5e-85ac-eaae85067897",
+						"exec": [
+							"pm.test(\"status time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"pm.test(\"Validate header contenttype\",function(){\r",
+							"    pm.response.to.have.header(\"Content-type\")\r",
+							"})\r",
+							"pm.test(\"Prueba status code\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"pm.test(\"Validar que sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"console.log(\"Response: \", jsonData)\r",
+							"console.log(\"Id: \", jsonData.bookingid)\r",
+							"\r",
+							"pm.environment.set('ID', jsonData.bookingid);\r",
+							"postman.setEnvironmentVariable('ID2', jsonData.bookingid);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"Jimys\",\r\n    \"lastname\" : \"Brownys\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url_base}}/booking",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modificar reserva",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae024859-147c-4b68-a736-7ed3a6b737a1",
+						"exec": [
+							"pm.test(\"status time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"pm.test(\"Validate header contenttype\",function(){\r",
+							"    pm.response.to.have.header(\"Content-type\")\r",
+							"})\r",
+							"pm.test(\"Prueba status code\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"pm.test(\"Validar que sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2b773ba7-644f-4bfb-a895-12d95ad6a515",
+						"exec": [
+							"let getTokenRequest = {\r",
+							"    method: 'POST',\r",
+							"    url:'https://restful-booker.herokuapp.com/auth',\r",
+							"    body:{\r",
+							"        mode: 'urlencoded',\r",
+							"        urlencoded:[\r",
+							"            {key: 'username', value: 'admin'},\r",
+							"            {key: 'password', value: 'password123'}\r",
+							"        ]\r",
+							"    }\r",
+							"};\r",
+							"console.log(\"Funcion: \",getTokenRequest)\r",
+							"\r",
+							"\r",
+							"pm.sendRequest(getTokenRequest,(err, response) =>\r",
+							"{\r",
+							"    console.log(\"Respuesta:\", response )\r",
+							"    var jsonResponse = response.json(),\r",
+							"    newToken = jsonResponse.token\r",
+							"\r",
+							"    pm.environment.set('token', newToken)\r",
+							"    console.log(\"token: \", newToken)\r",
+							"}\r",
+							");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=05a2975ce7ff4e4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"Jamesy\",\r\n    \"lastname\" : \"Brownysy\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{url_base}}/booking/18",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"booking",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b575ede-e20c-454c-a3d3-5e74766d7ad0",
+						"exec": [
+							"pm.test(\"status time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"pm.test(\"Validate header contenttype\",function(){\r",
+							"    pm.response.to.have.header(\"Content-type\")\r",
+							"})\r",
+							"pm.test(\"Prueba status code\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"pm.test(\"Validar que sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{url_base}}/auth",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45e98ba8-908d-4206-933f-d23bb69a8c75",
+						"exec": [
+							"pm.test(\"status time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"pm.test(\"Validate header contenttype\",function(){\r",
+							"    pm.response.to.have.header(\"Content-type\")\r",
+							"})\r",
+							"pm.test(\"Prueba status code\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"pm.test(\"Validar que sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"type": "text",
+						"value": "token=95dabc6bae05c55"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"Jamesy\",\r\n    \"lastname\" : \"Brownysy\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{url_base}}/booking/1",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"booking",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "539463ce-f82d-45b9-b934-0ffb7317c9bc",
+						"exec": [
+							"pm.test(\"status time\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"pm.test(\"Validate header contenttype\",function(){\r",
+							"    pm.response.to.have.header(\"Content-type\")\r",
+							"})\r",
+							"pm.test(\"Prueba status code\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201);\r",
+							"});\r",
+							"pm.test(\"Validar que sea Json\", function(){\r",
+							"    pm.response.to.be.json;\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e6ffb28d-8609-4d96-91da-38ff550bc863",
+						"exec": [
+							"let getTokenRequest = {\r",
+							"    method: 'POST',\r",
+							"    url:'https://restful-booker.herokuapp.com/auth',\r",
+							"    body:{\r",
+							"        mode: 'urlencoded',\r",
+							"        urlencoded:[\r",
+							"            {key: 'username', value: 'admin'},\r",
+							"            {key: 'password', value: 'password123'}\r",
+							"        ]\r",
+							"    }\r",
+							"};\r",
+							"console.log(\"Funcion: \",getTokenRequest)\r",
+							"\r",
+							"\r",
+							"pm.sendRequest(getTokenRequest,(err, response) =>\r",
+							"{\r",
+							"    console.log(\"Respuesta:\", response )\r",
+							"    var jsonResponse = response.json(),\r",
+							"    newToken = jsonResponse.token\r",
+							"\r",
+							"    pm.environment.set('token', newToken)\r",
+							"    console.log(\"token: \", newToken)\r",
+							"}\r",
+							");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"type": "text",
+						"value": "token={{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"Jamesy\",\r\n    \"lastname\" : \"Brownysy\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{url_base}}/booking/18",
+					"protocol": "https",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"booking",
+						"18"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
